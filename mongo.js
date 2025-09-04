@@ -27,25 +27,25 @@ if(name && number){
     name,
     number,
   })
-  person.save().then(result => {
+  person.save().then(() => {
     console.log(`added ${name} number ${number} to phonebook`)
     mongoose.connection.close()
   })
-  .catch(err => {
-    console.error('Error saving the person: ', err)
-    mongoose.connection.close()
-  })
+    .catch(err => {
+      console.error('Error saving the person: ', err)
+      mongoose.connection.close()
+    })
 
 } else {
-  Person.find({}).then((result) => {
+  Person.find({}).then(result => {
     console.log('phonebook')
     result.forEach((person) => {
       console.log(`${person.name} ${person.number}`)
     })
     mongoose.connection.close()
   })
-  .catch(err => {
-    console.error('Error fetching the person data: ', err)
-    mongoose.connection.close()
-  })
+    .catch(err => {
+      console.error('Error fetching the person data: ', err)
+      mongoose.connection.close()
+    })
 }
